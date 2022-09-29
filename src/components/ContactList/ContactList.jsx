@@ -2,11 +2,17 @@ import { Contact } from 'components/Contact/Contact';
 import PropTypes from 'prop-types';
 import { Contacts, Text } from './ContactList.styled';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ contacts, onDeleteContact }) => {
   return contacts.length ? (
     <Contacts>
       {contacts.map(({ name, number, id }) => (
-        <Contact key={id} name={name} number={number} />
+        <Contact
+          key={id}
+          name={name}
+          number={number}
+          id={id}
+          onDeleteContact={onDeleteContact}
+        />
       ))}
     </Contacts>
   ) : (

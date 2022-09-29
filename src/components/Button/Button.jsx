@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ButtonStyled = styled.button`
+export const Button = styled.button`
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
   min-width: 160px;
   min-height: 32px;

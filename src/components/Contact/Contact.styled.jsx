@@ -6,7 +6,7 @@ export const ContactStyled = styled.li`
   align-items: center;
   padding: ${p => p.theme.space[2]}px;
 
-  background-color: rgba(247, 227, 201, 0.4);
+  background-color: ${p => p.theme.colors.backgroundContactCardColor};
   text-transform: uppercase;
   font-size: ${p => p.theme.fontSizes.s};
 

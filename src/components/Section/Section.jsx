@@ -5,7 +5,7 @@ import { Title } from './Section.styled';
 export const Section = ({ title, children }) => (
   <Box as="section" py={[4]} bg="backgroundColor">
     <Box
-      width="50%"
+      width="70%"
       mx="auto"
       p={[3]}
       bg="white"

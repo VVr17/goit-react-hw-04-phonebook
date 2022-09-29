@@ -4,6 +4,7 @@ export const theme = Object.freeze({
     btnColor: 'rgb(173, 216, 230)',
     btnShadowColor: 'rgba(0, 0, 0, 0.15)',
     backgroundColor: 'rgba(250, 235, 215, .3)',
+    backgroundContactCardColor: 'rgba(247, 227, 201, 0.4)',
   },
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

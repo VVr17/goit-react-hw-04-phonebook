@@ -1,6 +1,7 @@
-import { ButtonStyled } from 'components/Button/Button';
+import { Button } from 'components/Button/Button';
 import React, { Component } from 'react';
 import { Form } from './NewContactForm.styled';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const INITIAL_STATE = {
   name: '',
@@ -16,10 +17,23 @@ class NewContactForm extends Component {
   };
 
   handleSubmit = event => {
+    const { name } = event.target;
     event.preventDefault();
+
+    if (this.isInPhoneBook(name.value)) {
+      Notify.warning(`${name.value.toUpperCase()} is already in CONTACTS`);
+      return;
+    }
+
     this.props.onSubmit({ ...this.state });
     this.reset();
   };
+
+  isInPhoneBook(name) {
+    const { contacts } = this.props;
+    const normalizedName = name.toLowerCase();
+    return contacts.find(({ name }) => name.toLowerCase() === normalizedName);
+  }
 
   reset() {
     this.setState({ ...INITIAL_STATE });
@@ -54,7 +68,7 @@ class NewContactForm extends Component {
             required
           />
         </label>
-        <ButtonStyled type="submit">Add Contact</ButtonStyled>
+        <Button type="submit">Add Contact</Button>
       </Form>
     );
   }
