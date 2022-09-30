@@ -16,11 +16,11 @@ export const Label = styled.label`
     outline: transparent;
 
     border: 1px solid ${p => p.theme.colors.btnColor};
-    border-radius: 4px;
-    /* transition: border-color 250ms var(--transition-timing); */
+    border-radius: ${p => p.theme.space[1]}px;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:focus {
-      border-color: teal;
+      border-color: ${p => p.theme.colors.inputFocusColor};
     }
   }
 `;

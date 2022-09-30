@@ -1,5 +1,5 @@
-import { Button } from 'components/Button/Button';
 import PropTypes from 'prop-types';
+import { Button } from 'components/Button/Button';
 import { ContactStyled } from './Contact.styled';
 
 export const Contact = ({ name, number, onDeleteContact, id }) => (

@@ -12,7 +12,7 @@ export const Button = styled.button`
   border: 1px solid ${p => p.theme.colors.btnColor};
   background-color: ${p => p.theme.colors.btnColor};
   border-radius: ${p => p.theme.space[1]}px;
-  /* transition: box-shadow 250ms var(--transition-timing); */
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover,
   :focus {

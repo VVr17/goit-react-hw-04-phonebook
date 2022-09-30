@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactList } from '../ContactList/ContactList';
+import Filter from '../Filter/Filter';
 import NewContactForm from '../NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
-import Filter from '../Filter/Filter';
 import { Title } from './App.styled';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // [
 //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
