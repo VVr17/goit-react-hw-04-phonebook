@@ -62,7 +62,7 @@ class NewContactForm extends Component {
             <Field type="text" name="name" required>
               {({ field, meta: { touched, error } }) => (
                 <Input
-                  autoFocus
+                  autofocus
                   placeholder="Full name"
                   border={touched && error ? 'red' : 'btnColor'}
                   backgroundColor={touched && error ? 'bgErrorColor' : ''}
