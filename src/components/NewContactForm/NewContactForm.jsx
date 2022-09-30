@@ -40,6 +40,7 @@ class NewContactForm extends Component {
     }
 
     this.props.onSubmit({ ...values });
+    document.querySelector('[name="name"]').focus();
     resetForm();
   };
 
@@ -62,7 +63,6 @@ class NewContactForm extends Component {
             <Field type="text" name="name" required>
               {({ field, meta: { touched, error } }) => (
                 <Input
-                  autofocus
                   placeholder="Full name"
                   border={touched && error ? 'red' : 'btnColor'}
                   backgroundColor={touched && error ? 'bgErrorColor' : ''}
