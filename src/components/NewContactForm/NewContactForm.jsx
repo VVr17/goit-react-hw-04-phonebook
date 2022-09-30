@@ -59,7 +59,7 @@ class NewContactForm extends Component {
         <Form>
           <Label>
             Name
-            <Field type="text" name="name" required>
+            <Field type="text" name="name" required autoFocus>
               {({ field, meta: { touched, error } }) => (
                 <Input
                   placeholder="Full name"
@@ -85,7 +85,6 @@ class NewContactForm extends Component {
             </Field>
             <ErrorMessage name="number" component={ErrorText} />
           </Label>
-
           <Button type="submit">Add Contact</Button>
         </Form>
       </Formik>
