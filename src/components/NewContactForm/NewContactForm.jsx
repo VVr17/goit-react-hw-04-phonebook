@@ -59,7 +59,7 @@ class NewContactForm extends Component {
         <Form>
           <Label>
             Name
-            <Field type="text" name="name" required autoFocus>
+            <Field type="text" name="name" required autofocus>
               {({ field, meta: { touched, error } }) => (
                 <Input
                   placeholder="Full name"
