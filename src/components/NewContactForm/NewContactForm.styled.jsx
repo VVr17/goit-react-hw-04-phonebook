@@ -5,24 +5,26 @@ export const Label = styled.label`
   flex-direction: column;
   justify-content: center;
   margin-bottom: ${p => p.theme.space[3]}px;
-  width: 100%;
   font-size: ${p => p.theme.fontSizes.s};
   font-weight: ${p => p.theme.fontWeight.semiBold};
+
+  :last-of-type {
+    margin-bottom: ${p => p.theme.space[4]}px;
+  }
 `;
 
 export const Input = styled.input`
   margin-top: ${p => p.theme.space[1]}px;
   padding: ${p => p.theme.space[2]}px;
-  width: 96%;
   outline: transparent;
   background-color: ${p =>
     p.theme.colors[p.backgroundColor] || p.theme.colors.white};
-  border: 1px solid ${p => p.theme.colors[p.border]};
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.inputText};
   border-radius: ${p => p.theme.space[1]}px;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    border-color: ${p => p.theme.colors.inputFocusColor};
+    border-color: ${p => p.theme.colors.secondaryColor};
   }
 `;
 

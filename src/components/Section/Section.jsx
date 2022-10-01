@@ -1,16 +1,18 @@
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
 import { Title } from './Section.styled';
+import { theme } from 'constants/theme';
 
 export const Section = ({ title, children }) => (
-  <Box as="section" py={[4]} bg="backgroundColor">
+  <Box as="section" px={[2, 4, 6]} py={[3, 4, 4]}>
     <Box
-      width="70%"
       mx="auto"
-      p={[3]}
+      pt={[3, 3, 4]}
+      pb={[4, 4, 4]}
+      px={[3, 4, 4]}
       bg="white"
-      boxShadow="0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2)"
-      borderRadius="0px 0px 4px 4px"
+      boxShadow={theme.boxShadow.second}
+      borderRadius={theme.radii.normal}
     >
       {title && <Title>{title}</Title>}
       {children}

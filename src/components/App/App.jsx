@@ -6,17 +6,18 @@ import Filter from '../Filter/Filter';
 import NewContactForm from '../NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
 import { Title } from './App.styled';
+import { Box } from 'components/Box';
 
-// [
-//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-// ];
+const sample = [
+  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+];
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [...sample],
     filter: '',
   };
 
@@ -57,7 +58,7 @@ class App extends Component {
     const { contacts, filter } = this.state;
 
     return (
-      <>
+      <Box as="main" bg="mainBackgroundColor">
         <Title>PhoneBook</Title>
         <Section title="Create new contact">
           <NewContactForm onSubmit={this.addContact} contacts={contacts} />
@@ -71,7 +72,7 @@ class App extends Component {
             onDeleteContact={this.deleteContact}
           />
         </Section>
-      </>
+      </Box>
     );
   }
 }

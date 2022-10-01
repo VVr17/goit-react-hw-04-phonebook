@@ -86,7 +86,9 @@ class NewContactForm extends Component {
             </Field>
             <ErrorMessage name="number" component={ErrorText} />
           </Label>
-          <Button type="submit">Add Contact</Button>
+          <Button type="submit" name="primary">
+            Add Contact
+          </Button>
         </Form>
       </Formik>
     );
