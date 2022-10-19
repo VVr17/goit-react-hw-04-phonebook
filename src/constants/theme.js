@@ -1,4 +1,4 @@
-const breakpoints = ['0', '576px', '768px', '1280px'];
+export const breakpoints = ['480', '768', '1280'];
 
 export const theme = Object.freeze({
   colors: {
@@ -41,10 +41,19 @@ export const theme = Object.freeze({
   //   heading: 1.125,
   // },
 
+  breakpoints: [
+    `${breakpoints[0]}px`,
+    `${breakpoints[1]}px`,
+    `${breakpoints[2]}px`,
+  ],
+
   mediaQueries: {
-    small: `@media screen and (min-width: ${breakpoints[0]})`,
-    medium: `@media screen and (min-width: ${breakpoints[2]})`,
-    large: `@media screen and (min-width: ${breakpoints[3]})`,
+    smallOnly: `@media screen and (max-width: ${breakpoints[1] - 0.02}px)`,
+    medium: `@media screen and (min-width: ${breakpoints[1]}px)`,
+    mediumOnly: `@media screen and (min-width: ${
+      breakpoints[1]
+    }px) and (max-width: ${breakpoints[2] - 0.02}px)`,
+    large: `@media screen and (min-width: ${breakpoints[2]}px)`,
   },
 
   borders: {

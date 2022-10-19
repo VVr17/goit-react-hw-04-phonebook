@@ -138,8 +138,7 @@ class NewContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <Formik>
-        <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
           <label>
             Name
             <input
@@ -166,7 +165,6 @@ class NewContactForm extends Component {
           </label>
           <Button type="submit">Add Contact</Button>
         </Form>
-      </Formik>
     );
   }
 }
