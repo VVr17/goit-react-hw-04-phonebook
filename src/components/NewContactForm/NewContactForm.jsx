@@ -104,6 +104,7 @@ NewContactForm.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired
   ),
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default NewContactForm;

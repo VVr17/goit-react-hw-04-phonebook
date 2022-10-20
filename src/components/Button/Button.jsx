@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
 import { ButtonStyled } from './Button.styled';
 
-export const Button = ({
-  type = 'button',
-  disabled = false,
-  name,
-  onClick,
-  children,
-}) => {
+export const Button = ({ type = 'button', name, onClick, children }) => {
   return (
-    <ButtonStyled type={type} disabled={disabled} name={name} onClick={onClick}>
+    <ButtonStyled type={type} name={name} onClick={onClick}>
       {children}
     </ButtonStyled>
   );
@@ -17,6 +11,7 @@ export const Button = ({
 
 Button.propTypes = {
   type: PropTypes.string,
-  disabled: PropTypes.bool,
   name: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node,
 };
