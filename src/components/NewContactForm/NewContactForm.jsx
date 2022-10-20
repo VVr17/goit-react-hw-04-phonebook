@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
-import { Button } from 'components/Button/Button';
 import { Label, Input, ErrorText } from './NewContactForm.styled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Button } from 'components/Button/Button';
 
 const INITIAL_VALUES = {
   name: '',
@@ -94,6 +95,16 @@ class NewContactForm extends Component {
     );
   }
 }
+
+NewContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  ),
+};
 
 export default NewContactForm;
 

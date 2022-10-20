@@ -21,6 +21,6 @@ export const Section = ({ title, children }) => (
   </Box>
 );
 
-Section.prototype = {
+Section.propTypes = {
   title: PropTypes.string,
 };
