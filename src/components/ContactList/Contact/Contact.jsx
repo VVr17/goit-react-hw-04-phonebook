@@ -5,7 +5,7 @@ import { Button } from '../../Button/Button';
 
 export const Contact = ({ name, number, onDelete }) => (
   <ContactStyled>
-    <Box pr={[2]} display={['block', 'flex']}>
+    <Box display={['block', 'flex']}>
       <p>{name}:</p>
       <p>{number}</p>
     </Box>
