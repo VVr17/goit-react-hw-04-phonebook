@@ -3,19 +3,18 @@ import { ContactStyled } from './Contact.styled';
 import { Box } from 'components/Box';
 import { Button } from '../../Button/Button';
 
-export const Contact = ({ name, number, onDeleteContact, id }) => (
+export const Contact = ({ name, number, onDelete }) => (
   <ContactStyled>
     <Box pr={[2]} display={['block', 'flex']}>
       <p>{name}:</p>
       <p>{number}</p>
     </Box>
-    <Button onClick={() => onDeleteContact(id)}>Delete</Button>
+    <Button onClick={onDelete}>Delete</Button>
   </ContactStyled>
 );
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
