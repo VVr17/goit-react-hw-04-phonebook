@@ -4,7 +4,7 @@ export const ContactStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${p => p.theme.colors.backgroundContactCardColor};
+  /* background-color: ${p => p.theme.colors.backgroundContactCardColor}; */
 
   p {
     text-transform: capitalize;
