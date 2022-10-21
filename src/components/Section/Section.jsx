@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Box } from 'components/Box';
+import { Box } from 'components/Box/Box';
 import { Title } from './Section.styled';
 import { theme } from 'constants/theme';
 

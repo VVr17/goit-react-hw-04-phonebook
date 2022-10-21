@@ -31,7 +31,7 @@ const validationSchema = yup.object().shape({
     .required('Number is required'),
 });
 
-class NewContactForm extends Component {
+export class NewContactForm extends Component {
   handleSubmit = (values, actions) => {
     const { resetForm } = actions;
 
@@ -106,8 +106,6 @@ NewContactForm.propTypes = {
   ),
   onSubmit: PropTypes.func.isRequired,
 };
-
-export default NewContactForm;
 
 /* 
 const INITIAL_STATE = {

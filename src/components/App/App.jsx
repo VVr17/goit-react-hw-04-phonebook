@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Box } from 'components/Box/Box';
 import { ContactList } from '../ContactList/ContactList';
-import Filter from '../Filter/Filter';
-import NewContactForm from '../NewContactForm/NewContactForm';
+import { Filter } from 'components/Filter/Filter';
+import { NewContactForm } from 'components/NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
 import { Title } from './App.styled';
-import { Box } from 'components/Box';
 
 const sample = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
