@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { ToastContainer, toast } from 'react-toastify';
 import { Box } from 'components/Box/Box';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { NewContactForm } from 'components/NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
 import { Title } from './App.styled';
+import 'react-toastify/dist/ReactToastify.css';
 
 const sample = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -31,8 +32,7 @@ class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
-
-    Notify.success(`${name.toUpperCase()} successfully added to CONTACTS`);
+    toast.success(`${name.toUpperCase()} successfully added to CONTACTS`);
   };
 
   deleteContact = idToDelete => {
@@ -72,6 +72,7 @@ class App extends Component {
             onDeleteContact={this.deleteContact}
           />
         </Section>
+        <ToastContainer autoClose={3000} theme="colored" />
       </Box>
     );
   }

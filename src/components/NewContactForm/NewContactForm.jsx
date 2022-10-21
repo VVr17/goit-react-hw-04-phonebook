@@ -4,8 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 import { Label, Input, ErrorText } from './NewContactForm.styled';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Button } from 'components/Button/Button';
+import { toast } from 'react-toastify';
 
 const INITIAL_VALUES = {
   name: '',
@@ -36,7 +36,7 @@ export class NewContactForm extends Component {
     const { resetForm } = actions;
 
     if (this.isInPhoneBook(values.name)) {
-      Notify.warning(`${values.name.toUpperCase()} is already in CONTACTS`);
+      toast.warn(`${values.name.toUpperCase()} is already in CONTACTS`);
       return;
     }
 
