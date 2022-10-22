@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'constants/theme';
 import App from 'components/App/App';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

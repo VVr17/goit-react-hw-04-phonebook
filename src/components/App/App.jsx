@@ -7,7 +7,6 @@ import { Filter } from 'components/Filter/Filter';
 import { NewContactForm } from 'components/NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
 import { Title } from './App.styled';
-import 'react-toastify/dist/ReactToastify.css';
 
 const sample = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
