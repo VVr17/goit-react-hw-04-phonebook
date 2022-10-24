@@ -59,9 +59,13 @@ class App extends Component {
   };
 
   deleteContact = idToDelete => {
+    const { contacts } = this.state;
+    const contactToDelete = contacts.find(({ id }) => id === idToDelete);
+
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(({ id }) => id !== idToDelete),
     }));
+    toast.info(`${contactToDelete.name.toUpperCase()} deleted from CONTACTS`);
   };
 
   changeFilter = event => {
