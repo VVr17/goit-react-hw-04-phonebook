@@ -5,6 +5,7 @@ export const Title = styled.h1`
   padding-top: ${p => p.theme.space[3]}px;
   font-weight: ${p => p.theme.fontWeight.bold};
   font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.accentTextColor};
   line-height: 1.18;
   letter-spacing: 0.05em;
   text-align: center;

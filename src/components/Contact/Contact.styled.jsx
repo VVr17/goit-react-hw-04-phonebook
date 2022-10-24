@@ -7,15 +7,15 @@ export const ContactStyled = styled.div`
   /* background-color: ${p => p.theme.colors.backgroundContactCardColor}; */
 
   p {
+    margin-bottom: ${p => p.theme.space[1]}px;
     text-transform: capitalize;
     font-weight: ${p => p.theme.fontWeight.semiBold};
     font-size: ${p => p.theme.fontSizes.s};
     line-height: 1.18;
-    margin-bottom: ${p => p.theme.space[1]}px;
 
     ${p => p.theme.mediaQueries.medium} {
-      font-size: ${p => p.theme.fontSizes.s};
       margin-bottom: 0;
+      font-size: ${p => p.theme.fontSizes.s};
 
       :not(:last-of-type) {
         margin-right: ${p => p.theme.space[3]}px;

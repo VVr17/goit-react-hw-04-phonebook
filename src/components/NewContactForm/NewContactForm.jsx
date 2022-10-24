@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 
-import { Label, Input, ErrorText } from './NewContactForm.styled';
+// import { Label, Input, ErrorText } from './NewContactForm.styled';
 import { Button } from 'components/Button/Button';
 import { toast } from 'react-toastify';
+import { Label } from './Label/Label';
 
 const INITIAL_VALUES = {
   name: '',
@@ -59,34 +60,8 @@ export class NewContactForm extends Component {
         validationSchema={validationSchema}
       >
         <Form>
-          <Label>
-            Name
-            <Field type="text" name="name" required>
-              {({ field, meta: { touched, error } }) => (
-                <Input
-                  placeholder="Full name"
-                  border={touched && error ? 'red' : 'btnColor'}
-                  backgroundColor={touched && error ? 'bgErrorColor' : ''}
-                  {...field}
-                />
-              )}
-            </Field>
-            <ErrorMessage name="name" component={ErrorText} />
-          </Label>
-          <Label>
-            Number
-            <Field type="tel" name="number" required>
-              {({ field, meta: { touched, error } }) => (
-                <Input
-                  placeholder="Phone number"
-                  border={touched && error ? 'red' : 'btnColor'}
-                  backgroundColor={touched && error ? 'bgErrorColor' : ''}
-                  {...field}
-                />
-              )}
-            </Field>
-            <ErrorMessage name="number" component={ErrorText} />
-          </Label>
+          <Label name="name" placeholder="Full name" />
+          <Label type="tel" name="number" placeholder="Phone number" />
           <Button type="submit" name="primary">
             Add Contact
           </Button>

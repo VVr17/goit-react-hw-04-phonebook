@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
-export const Label = styled.label`
-  width: 100%;
+export const FilterLabelStyled = styled.label`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: ${p => p.theme.space[4]}px;
+  width: 100%;
   font-size: ${p => p.theme.fontSizes.s};
   font-weight: ${p => p.theme.fontWeight.semiBold};
 

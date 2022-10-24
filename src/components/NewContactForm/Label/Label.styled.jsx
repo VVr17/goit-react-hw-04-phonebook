@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
-export const Label = styled.label`
+export const LabelStyled = styled.label`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: ${p => p.theme.space[3]}px;
   font-size: ${p => p.theme.fontSizes.s};
   font-weight: ${p => p.theme.fontWeight.semiBold};
+  text-transform: capitalize;
 
   :last-of-type {
     margin-bottom: ${p => p.theme.space[4]}px;
