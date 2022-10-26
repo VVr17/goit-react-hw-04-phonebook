@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from 'constants/theme';
-import App from 'components/App/App';
+import { App } from 'components/App/App';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 

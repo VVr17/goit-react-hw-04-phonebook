@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { ToastContainer, toast } from 'react-toastify';
 import { Box } from 'components/Box/Box';
@@ -8,72 +8,45 @@ import { NewContactForm } from 'components/NewContactForm/NewContactForm';
 import { Section } from '../Section/Section';
 import { Title } from './App.styled';
 
-// const initialState = [
-//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-// ];
-
 const LOCAL_STORAGE_KEY = {
   contacts: 'contacts',
 };
 
-class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+export const App = () => {
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.contacts)) ?? []
+  );
+  const [filter, setFilter] = useState('');
 
-  componentDidMount() {
-    const contactsFromLocalStorage = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_KEY.contacts)
-    );
-    if (contactsFromLocalStorage)
-      this.setState({ contacts: contactsFromLocalStorage });
-  }
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY.contacts, JSON.stringify(contacts));
+  }, [contacts]);
 
-  componentDidUpdate(_, prevState) {
-    const prevContacts = prevState.contacts;
-    const updatedContacts = this.state.contacts;
-
-    if (prevContacts !== updatedContacts) {
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY.contacts,
-        JSON.stringify(updatedContacts)
-      );
-    }
-  }
-
-  addContact = ({ name, number }) => {
+  function addContact({ name, number }) {
     const contact = {
       name,
       number,
       id: nanoid().slice(0, 8),
     };
 
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    setContacts(prevContacts => [...prevContacts, contact]);
     toast.success(`${name.toUpperCase()} successfully added to CONTACTS`);
-  };
+  }
 
-  deleteContact = idToDelete => {
-    const { contacts } = this.state;
+  function deleteContact(idToDelete) {
     const contactToDelete = contacts.find(({ id }) => id === idToDelete);
 
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(({ id }) => id !== idToDelete),
-    }));
+    setContacts(prevContacts =>
+      prevContacts.filter(({ id }) => id !== idToDelete)
+    );
     toast.info(`${contactToDelete.name.toUpperCase()} deleted from CONTACTS`);
-  };
+  }
 
-  changeFilter = event => {
-    this.setState({ filter: event.target.value });
-  };
+  function changeFilter(event) {
+    setFilter(event.target.value);
+  }
 
-  getFilteredContacts() {
-    const { contacts, filter } = this.state;
+  function getFilteredContacts() {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
@@ -81,28 +54,22 @@ class App extends Component {
     );
   }
 
-  render() {
-    const { contacts, filter } = this.state;
-
-    return (
-      <Box as="main" bg="mainBackgroundColor">
-        <Title>PhoneBook</Title>
-        <Section title="Create new contact">
-          <NewContactForm onSubmit={this.addContact} contacts={contacts} />
-        </Section>
-        <Section title="Contacts">
-          {contacts.length > 0 && (
-            <Filter value={filter} onChange={this.changeFilter} />
-          )}
-          <ContactList
-            contacts={this.getFilteredContacts()}
-            onDeleteContact={this.deleteContact}
-          />
-        </Section>
-        <ToastContainer autoClose={3000} theme="colored" />
-      </Box>
-    );
-  }
-}
-
-export default App;
+  return (
+    <Box as="main" bg="mainBackgroundColor">
+      <Title>PhoneBook</Title>
+      <Section title="Create new contact">
+        <NewContactForm onSubmit={addContact} contacts={contacts} />
+      </Section>
+      <Section title="Contacts">
+        {contacts.length > 0 && (
+          <Filter value={filter} onChange={changeFilter} />
+        )}
+        <ContactList
+          contacts={getFilteredContacts()}
+          onDeleteContact={deleteContact}
+        />
+      </Section>
+      <ToastContainer autoClose={3000} theme="colored" />
+    </Box>
+  );
+};
