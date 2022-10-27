@@ -14,7 +14,7 @@ export const LabelStyled = styled.label`
   }
 `;
 
-export const Input = styled.input`
+export const InputStyled = styled.input`
   margin-top: ${p => p.theme.space[1]}px;
   padding: ${p => p.theme.space[2]}px;
   outline: transparent;
@@ -32,4 +32,5 @@ export const Input = styled.input`
 export const ErrorText = styled.p`
   color: ${p => p.theme.colors.red};
   font-size: ${p => p.theme.fontSizes.xs};
+  text-transform: lowercase;
 `;

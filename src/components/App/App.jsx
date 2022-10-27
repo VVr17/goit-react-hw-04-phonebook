@@ -58,7 +58,7 @@ export const App = () => {
     <Box as="main" bg="mainBackgroundColor">
       <Title>PhoneBook</Title>
       <Section title="Create new contact">
-        <NewContactForm onSubmit={addContact} contacts={contacts} />
+        <NewContactForm onFormSubmit={addContact} contacts={contacts} />
       </Section>
       <Section title="Contacts">
         {contacts.length > 0 && (

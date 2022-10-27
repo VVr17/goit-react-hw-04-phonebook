@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import { Formik, Form } from 'formik';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import { Button } from 'components/Button/Button';
-import { Label } from './Label/Label';
+import { Input } from './Input/Input';
 
-const INITIAL_VALUES = {
+const INITIAL_STATE = {
   name: '',
   number: '',
 };
@@ -13,8 +14,8 @@ const INITIAL_VALUES = {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(2, 'Name should be at least 2 characters')
-    .max(40, 'Name should be at most 40 characters')
+    .min(4, 'Name should be at least 4 characters')
+    .max(20, 'Name should be at most 20 characters')
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -29,19 +30,29 @@ const validationSchema = yup.object().shape({
     .required('Number is required'),
 });
 
-export const NewContactForm = ({ contacts, onSubmit }) => {
-  function handleSubmit(values, actions) {
-    const { resetForm } = actions;
+export const NewContactForm = ({ contacts, onFormSubmit }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { ...INITIAL_STATE },
+    resolver: yupResolver(validationSchema),
+  });
 
-    if (isInPhoneBook(values.name)) {
-      toast.warn(`${values.name.toUpperCase()} is already in CONTACTS`);
+  const onSubmit = data => {
+    const { name } = data;
+
+    if (isInPhoneBook(name)) {
+      toast.warn(`${name.toUpperCase()} is already in CONTACTS`);
+      reset();
       return;
     }
 
-    onSubmit({ ...values });
-    document.querySelector('[name="name"]').focus();
-    resetForm();
-  }
+    onFormSubmit({ ...data });
+    reset();
+  };
 
   function isInPhoneBook(name) {
     const normalizedName = name.toLowerCase();
@@ -49,19 +60,24 @@ export const NewContactForm = ({ contacts, onSubmit }) => {
   }
 
   return (
-    <Formik
-      initialValues={INITIAL_VALUES}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      <Form>
-        <Label name="name" placeholder="Full name" />
-        <Label type="tel" name="number" placeholder="Phone number" />
-        <Button type="submit" name="primary">
-          Add Contact
-        </Button>
-      </Form>
-    </Formik>
+    /* "handleSubmit" will validate inputs before invoking "onSubmit" */
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        name="name"
+        placeholder="Name"
+        register={register}
+        error={errors.name}
+      />
+      <Input
+        name="number"
+        placeholder="Phone number"
+        register={register}
+        error={errors.number}
+      />
+      <Button type="submit" name="primary">
+        Add Contact
+      </Button>
+    </form>
   );
 };
 
@@ -73,5 +89,11 @@ NewContactForm.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired
   ),
-  onSubmit: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
+
+/* <label>
+  Name
+  <input type="text" placeholder="Name" {...register('name')} />
+  {errors.name && <p>{errors.name?.message}</p>}
+</label>  */
