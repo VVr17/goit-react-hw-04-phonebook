@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form'; // Forms
+import { yupResolver } from '@hookform/resolvers/yup'; // for React-hook-form work with Yup
+import * as yup from 'yup'; // Form validation
+import { toast } from 'react-toastify'; // Notifications
 import { Button } from 'components/Button/Button';
 import { Input } from './Input/Input';
 
